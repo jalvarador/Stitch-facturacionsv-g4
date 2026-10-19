@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="DTE Factura-SV">
+  <rect width="32" height="32" rx="6" fill="#0f2537"/>
+  <rect x="8" y="6.5" width="16" height="19" rx="1.5" fill="none" stroke="#68dba9" stroke-width="1.6"/>
+  <path d="M11.5 16.5l3 3 6-6.5" fill="none" stroke="#85f8c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

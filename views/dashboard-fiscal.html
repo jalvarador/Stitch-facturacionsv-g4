@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><title>Dashboard Fiscal · DTE Factura-SV</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "outline-variant": "#c3c7cd",
+        "surface-dim": "#cbdbf5",
+        "on-tertiary-fixed": "#002114",
+        "on-background": "#0b1c30",
+        "surface-tint": "#4c6075",
+        "on-surface-variant": "#43474c",
+        "surface-bright": "#f8f9ff",
+        "surface-container-highest": "#d3e4fe",
+        "secondary-container": "#316bf3",
+        "on-error": "#ffffff",
+        "surface-container-high": "#dce9ff",
+        "surface-variant": "#d3e4fe",
+        "primary-container": "#0f2537",
+        "tertiary-fixed-dim": "#68dba9",
+        "on-surface": "#0b1c30",
+        "on-primary-fixed-variant": "#34495c",
+        "on-secondary-fixed": "#00174b",
+        "on-primary-container": "#788da3",
+        "on-tertiary-fixed-variant": "#005137",
+        "secondary-fixed": "#dbe1ff",
+        "error": "#ba1a1a",
+        "tertiary-container": "#002a1b",
+        "inverse-primary": "#b3c9e0",
+        "primary": "#000f1d",
+        "outline": "#74777d",
+        "secondary": "#0051d5",
+        "error-container": "#ffdad6",
+        "on-secondary": "#ffffff",
+        "primary-fixed": "#cfe5fd",
+        "on-tertiary-container": "#1a9e70",
+        "on-error-container": "#93000a",
+        "tertiary": "#001209",
+        "inverse-surface": "#213145",
+        "on-secondary-fixed-variant": "#003ea8",
+        "surface-container": "#e5eeff",
+        "on-primary": "#ffffff",
+        "background": "#f8f9ff",
+        "tertiary-fixed": "#85f8c4",
+        "on-secondary-container": "#fefcff",
+        "surface": "#f8f9ff",
+        "on-primary-fixed": "#061d2f",
+        "primary-fixed-dim": "#b3c9e0",
+        "surface-container-low": "#eff4ff",
+        "on-tertiary": "#ffffff",
+        "secondary-fixed-dim": "#b4c5ff",
+        "surface-container-lowest": "#ffffff",
+        "inverse-on-surface": "#eaf1ff"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "margin-desktop": "2rem",
+        "space-xs": "0.25rem",
+        "space-lg": "1.25rem",
+        "space-sm": "0.5rem",
+        "gutter-desktop": "1.5rem",
+        "space-xl": "2rem",
+        "margin": "1rem",
+        "gutter": "1rem",
+        "space-md": "0.75rem"
+      },
+      "fontFamily": {
+        "legal-code-sm": ["JetBrains Mono"],
+        "fiscal-numeric-lg": ["Inter"],
+        "headline-lg": ["Inter"],
+        "headline-sm": ["Inter"],
+        "fiscal-numeric-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-sm": ["Inter"],
+        "headline-xl": ["Inter"],
+        "body-md": ["Inter"],
+        "label-sm": ["Inter"],
+        "headline-md": ["Inter"],
+        "label-md": ["Inter"],
+        "legal-code-xs": ["JetBrains Mono"]
+      },
+      "fontSize": {
+        "legal-code-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+        "fiscal-numeric-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+        "headline-sm": ["16px", {"lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+        "fiscal-numeric-md": ["14px", {"lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+        "legal-code-xs": ["11px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "400"}]
+      }
+    }
+  }
+}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center justify-between border-b border-surface-container-high bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><img alt="DTE El Salvador Logo" class="h-8 w-auto object-contain" src="img/logo-dte.svg"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-primary leading-tight tracking-tight">DTE Factura-SV</span><span class="font-legal-code-xs text-legal-code-xs text-on-surface-variant font-medium">MINISTERIO DE HACIENDA</span></div></div></div><div class="px-space-md py-space-sm"><div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-base">store</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Punto de Venta</span><span class="font-body-sm text-body-sm text-on-surface font-semibold truncate max-w-[170px]" title="Casa Matriz - Sucursal San Salvador 01 (PV-01)">Casa Matriz (PV-01)</span></div></div><span class="material-symbols-outlined text-on-surface-variant text-base">expand_more</span></div></div><div class="px-space-md pb-space-xs"><a class="flex items-center gap-space-xs px-space-sm py-space-sm rounded-lg border border-surface-container-high text-secondary font-label-md text-label-md hover:bg-surface-container-low transition-colors" href="../index.html">← Volver al inicio</a></div><nav class="flex flex-col gap-space-xs px-space-md py-space-xs" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><span class="px-space-sm py-space-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Operación Fiscal</span><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary font-semibold shadow-sm" data-path="dashboard-fiscal" href="dashboard-fiscal.html"><span class="material-symbols-outlined text-xl">dashboard</span><span class="font-body-md text-body-md">Dashboard Fiscal</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" data-path="emision-dte" href="emision-dte.html"><span class="material-symbols-outlined text-xl">post_add</span><span class="font-body-md text-body-md">Emisión de DTE</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" data-path="consulta-trazabilidad" href="consulta-trazabilidad.html"><span class="material-symbols-outlined text-xl">find_in_page</span><span class="font-body-md text-body-md">Consulta y Trazabilidad</span></a><a aria-disabled="true" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant opacity-50 cursor-not-allowed" data-path="eventos-invalidacion" title="Pantalla no incluida en el diseño de Stitch"><span class="material-symbols-outlined text-xl">rule_folder</span><span class="font-body-md text-body-md">Invalidación y Anulación</span></a><a aria-disabled="true" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant opacity-50 cursor-not-allowed" data-path="contingencia-lotes" title="Pantalla no incluida en el diseño de Stitch"><span class="material-symbols-outlined text-xl">cloud_off</span><span class="font-body-md text-body-md">Contingencia Offline</span></a><div class="my-space-xs border-t border-surface-container-high"></div><span class="px-space-sm py-space-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Cumplimiento y Firma</span><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" data-path="reportes-f07" href="reportes-f07.html"><span class="material-symbols-outlined text-xl">assessment</span><span class="font-body-md text-body-md">Reportes e Informes F-07</span></a><a aria-disabled="true" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant opacity-50 cursor-not-allowed" data-path="configuracion-firma" title="Pantalla no incluida en el diseño de Stitch"><span class="material-symbols-outlined text-xl">vpn_key</span><span class="font-body-md text-body-md">Firma y Llave Digital</span></a></nav></div><div class="p-space-md border-t border-surface-container-high bg-surface-container-lowest"><div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant">ESTADO MH SV</span><span class="font-legal-code-xs text-legal-code-xs text-on-tertiary-container font-semibold">EN LÍNEA</span></div><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span><span class="font-legal-code-xs text-legal-code-xs text-on-surface-variant">Sincronización API v3</span></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter-desktop border-b border-surface-container-high"><div class="flex items-center gap-space-lg"><div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-tertiary-container text-tertiary-fixed border border-on-tertiary-fixed-variant"><span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-ping"></span><span class="w-2 h-2 rounded-full bg-tertiary-fixed -ml-2.5"></span><span class="font-label-sm text-label-sm font-semibold tracking-wide uppercase">Ambiente de Producción - MH SV</span></div><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined text-base text-secondary">verified_user</span><span class="font-legal-code-xs text-legal-code-xs font-medium">Certificado Digital Vigente hasta Dic 2025</span></div></div><div class="flex items-center gap-space-lg"><div class="hidden md:flex flex-col text-right"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Establecimiento Activo</span><span class="font-body-sm text-body-sm font-semibold text-on-surface">San Salvador 01 (PV-01)</span></div><div class="h-8 w-px bg-surface-container-high"></div><div class="flex items-center gap-space-md"><div class="flex flex-col text-right"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Licda. Carmen Rivera</span><span class="font-label-sm text-label-sm text-on-surface-variant">Auditor Fiscal / Administrador</span></div><img alt="Avatar de Licda. Carmen Rivera" class="w-8 h-8 rounded-full object-cover ring-2 ring-surface-container-high" src="img/avatar.svg"/></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full"><!-- Header Minimalista y Ejecutivo -->
+<div class="px-gutter-desktop pt-space-lg pb-space-md border-b border-surface-container-high bg-surface-container-lowest">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Ministerio de Hacienda • DGII</span>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-0.5">Resumen Fiscal</h1>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Estado Sincronizado MH Discreto -->
+<div class="inline-flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span>Sincronizado con MH</span>
+</div>
+<!-- Selector de Período Limpio -->
+<div class="flex items-center gap-1 px-space-sm py-1.5 rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface font-label-md text-label-md cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-base text-outline">calendar_today</span>
+<span>Octubre 2024</span>
+<span class="material-symbols-outlined text-base text-outline">expand_more</span>
+</div>
+<!-- Botón Principal Prominente -->
+<button class="inline-flex items-center gap-1.5 px-space-md py-1.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:bg-secondary-container transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-base">add</span>
+<span>Nueva Factura</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-gutter-desktop py-space-lg flex flex-col gap-space-lg">
+<!-- 4 KPIs Ejecutivos Esenciales con Espaciado Generoso -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- KPI 1: Ventas Totales -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Ventas Totales</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-secondary material-symbols-outlined text-lg">payments</span>
+</div>
+<div class="mt-space-sm">
+<span class="font-fiscal-numeric-lg text-fiscal-numeric-lg text-on-surface font-bold tracking-tight">$284,520<span class="text-sm font-normal text-on-surface-variant">.40</span></span>
+<div class="flex items-center gap-1.5 mt-1 font-label-sm text-label-sm text-on-tertiary-container">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-semibold">+12.4%</span>
+<span class="text-outline font-normal">vs. mes anterior</span>
+</div>
+</div>
+</div>
+<!-- KPI 2: Débito Fiscal IVA -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">IVA Débito Fiscal</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-on-surface-variant material-symbols-outlined text-lg">receipt</span>
+</div>
+<div class="mt-space-sm">
+<span class="font-fiscal-numeric-lg text-fiscal-numeric-lg text-on-surface font-bold tracking-tight">$36,987<span class="text-sm font-normal text-on-surface-variant">.65</span></span>
+<p class="mt-1 font-label-sm text-label-sm text-outline font-normal">Tasa oficial 13% El Salvador</p>
+</div>
+</div>
+<!-- KPI 3: Documentos Emitidos -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">DTEs Emitidos</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-secondary material-symbols-outlined text-lg">cloud_done</span>
+</div>
+<div class="mt-space-sm">
+<span class="font-fiscal-numeric-lg text-fiscal-numeric-lg text-on-surface font-bold tracking-tight">14,892</span>
+<div class="flex items-center gap-1 mt-1 font-label-sm text-label-sm text-on-tertiary-container">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="font-semibold">99.4%</span>
+<span class="text-outline font-normal">aprobados DGII</span>
+</div>
+</div>
+</div>
+<!-- KPI 4: Contingencia y Pendientes -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Contingencia</span>
+<span class="p-1.5 rounded-lg bg-surface-container-low text-on-tertiary-container material-symbols-outlined text-lg">cloud_sync</span>
+</div>
+<div class="mt-space-sm">
+<span class="font-fiscal-numeric-lg text-fiscal-numeric-lg text-on-surface font-bold tracking-tight">0 <span class="text-sm font-normal text-outline">pendientes</span></span>
+<p class="mt-1 font-label-sm text-label-sm text-on-tertiary-container font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+          Transmisión al día
+        </p>
+</div>
+</div>
+</div>
+<!-- Sección Central Equilibrada: Gráfico Minimalista & Desglose de Tipos -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Gráfica de Emisión Semanal / Facturación -->
+<div class="lg:col-span-8 p-space-lg rounded-xl bg-surface-container-lowest border border-surface-container-high shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-lg">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Evolución de Facturación</h2>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Últimos 7 días de actividad comercial</p>
+</div>
+<div class="flex items-center gap-space-md text-label-sm font-label-sm text-outline">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded bg-secondary"></span>
+<span>Facturas (01)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded bg-primary"></span>
+<span>Crédito Fiscal (03)</span>
+</div>
+</div>
+</div>
+<!-- Visualizador de Barras Limpio -->
+<div class="w-full h-48 flex items-end justify-between px-space-sm pb-space-xs pt-space-md border-b border-surface-container-high">
+<!-- Lunes -->
+<div class="flex flex-col items-center flex-1 gap-space-xs group cursor-pointer">
+<div class="flex items-end gap-1 h-36">
+<div class="w-3 sm:w-5 bg-secondary/80 group-hover:bg-secondary rounded-t transition-colors" style="height: 55%"></div>
+<div class="w-3 sm:w-5 bg-primary/80 group-hover:bg-primary rounded-t transition-colors" style="height: 40%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline group-hover:text-on-surface transition-colors">Lun</span>
+</div>
+<!-- Martes -->
+<div class="flex flex-col items-center flex-1 gap-space-xs group cursor-pointer">
+<div class="flex items-end gap-1 h-36">
+<div class="w-3 sm:w-5 bg-secondary/80 group-hover:bg-secondary rounded-t transition-colors" style="height: 70%"></div>
+<div class="w-3 sm:w-5 bg-primary/80 group-hover:bg-primary rounded-t transition-colors" style="height: 52%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline group-hover:text-on-surface transition-colors">Mar</span>
+</div>
+<!-- Miércoles -->
+<div class="flex flex-col items-center flex-1 gap-space-xs group cursor-pointer">
+<div class="flex items-end gap-1 h-36">
+<div class="w-3 sm:w-5 bg-secondary/80 group-hover:bg-secondary rounded-t transition-colors" style="height: 65%"></div>
+<div class="w-3 sm:w-5 bg-primary/80 group-hover:bg-primary rounded-t transition-colors" style="height: 48%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline group-hover:text-on-surface transition-colors">Mié</span>
+</div>
+<!-- Jueves -->
+<div class="flex flex-col items-center flex-1 gap-space-xs group cursor-pointer">
+<div class="flex items-end gap-1 h-36">
+<div class="w-3 sm:w-5 bg-secondary/80 group-hover:bg-secondary rounded-t transition-colors" style="height: 82%"></div>
+<div class="w-3 sm:w-5 bg-primary/80 group-hover:bg-primary rounded-t transition-colors" style="height: 68%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline group-hover:text-on-surface transition-colors">Jue</span>
+</div>
+<!-- Viernes (Pico) -->
+<div class="flex flex-col items-center flex-1 gap-space-xs group cursor-pointer">
+<div class="flex items-end gap-1 h-36">
+<div class="w-3 sm:w-5 bg-secondary rounded-t shadow-sm" style="height: 95%"></div>
+<div class="w-3 sm:w-5 bg-primary rounded-t shadow-sm" style="height: 82%"></div>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Vie</span>
+</div>
+<!-- Sábado -->
+<div class="flex flex-col items-center flex-1 gap-space-xs group cursor-pointer">
+<div class="flex items-end gap-1 h-36">
+<div class="w-3 sm:w-5 bg-secondary/80 group-hover:bg-secondary rounded-t transition-colors" style="height: 42%"></div>
+<div class="w-3 sm:w-5 bg-primary/80 group-hover:bg-primary rounded-t transition-colors" style="height: 22%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline group-hover:text-on-surface transition-colors">Sáb</span>
+</div>
+<!-- Domingo -->
+<div class="flex flex-col items-center flex-1 gap-space-xs group cursor-pointer">
+<div class="flex items-end gap-1 h-36">
+<div class="w-3 sm:w-5 bg-secondary/80 group-hover:bg-secondary rounded-t transition-colors" style="height: 20%"></div>
+<div class="w-3 sm:w-5 bg-primary/80 group-hover:bg-primary rounded-t transition-colors" style="height: 10%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline group-hover:text-on-surface transition-colors">Dom</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-sm text-label-sm font-label-sm text-outline">
+<span>Pico de operaciones: 3,495 DTEs (Viernes)</span>
+<span class="font-medium text-on-surface">Promedio: 2,127 docs/día</span>
+</div>
+</div>
+<!-- Distribución por Tipo de Documento -->
+<div class="lg:col-span-4 p-space-lg rounded-xl bg-surface-container-lowest border border-surface-container-high shadow-sm flex flex-col justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Composición Fiscal</h2>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Distribución mensual por tipo</p>
+<div class="flex flex-col gap-space-md mt-space-lg">
+<!-- Item 1: Factura (01) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="font-medium text-on-surface">Factura Consumidor Final (01)</span>
+<span class="font-semibold text-on-surface">70.4%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 70.4%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">10,480 documentos • $86,070.40</span>
+</div>
+<!-- Item 2: Crédito Fiscal (03) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="font-medium text-on-surface">Comprobante Crédito Fiscal (03)</span>
+<span class="font-semibold text-on-surface">27.6%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 27.6%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">4,120 documentos • $198,450.00</span>
+</div>
+<!-- Item 3: Notas de Crédito / Débito (05/06) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="font-medium text-on-surface">Notas de Crédito / Débito (05/06)</span>
+<span class="font-semibold text-on-surface">2.0%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-outline-variant rounded-full" style="width: 2.0%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">292 documentos • -$2,410.15 IVA</span>
+</div>
+</div>
+</div>
+<div class="pt-space-md border-t border-surface-container-high mt-space-md flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-outline">Total período</span>
+<span class="font-bold text-on-surface">14,892 DTEs</span>
+</div>
+</div>
+</div>
+<!-- Tabla de Últimos Documentos Emitidos (Espaciosa, Depurada y Legible) -->
+<div class="rounded-xl bg-surface-container-lowest border border-surface-container-high shadow-sm overflow-hidden">
+<!-- Cabecera de la Tabla y Filtros -->
+<div class="p-space-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md border-b border-surface-container-high">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Últimos Documentos Emitidos</h2>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Seguimiento y estado de recepción ante DGII</p>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<div class="relative flex-1 sm:w-64">
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-outline text-base">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 text-body-sm font-body-sm bg-surface-container-low rounded-lg text-on-surface outline-none placeholder:text-outline focus:ring-1 focus:ring-secondary border-none" placeholder="Buscar por cliente, documento..." type="text"/>
+</div>
+<div class="flex items-center gap-1 px-space-sm py-1.5 rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface font-label-md text-label-md cursor-pointer hover:bg-surface-container-low transition-colors">
+<span>Todos</span>
+<span class="material-symbols-outlined text-base text-outline">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Tabla Despejada -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-sm text-label-sm text-outline uppercase tracking-wider">
+<th class="py-space-md px-space-lg font-semibold">Tipo</th>
+<th class="py-space-md px-space-md font-semibold">N° Documento</th>
+<th class="py-space-md px-space-md font-semibold">Cliente / Receptor</th>
+<th class="py-space-md px-space-md font-semibold text-right">Total (USD)</th>
+<th class="py-space-md px-space-md font-semibold">Estado MH</th>
+<th class="py-space-md px-space-lg font-semibold text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high text-body-sm font-body-sm text-on-surface">
+<!-- Fila 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-lg">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-label-sm font-semibold bg-primary text-on-primary">CCF</span>
+</td>
+<td class="py-space-md px-space-md font-mono text-legal-code-xs text-legal-code-xs text-on-surface-variant">
+              DTE-03-000004120
+            </td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Distribuidora Cuscatleca S.A. de C.V.</span>
+<span class="font-legal-code-xs text-legal-code-xs text-outline">NIT: 0614-220499-102-3</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-fiscal-numeric-md text-fiscal-numeric-md font-semibold text-on-surface">
+              $1,582.00
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-tertiary-container font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Recibido MH
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface transition-colors" title="Descargar PDF">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-secondary transition-colors" title="Ver Detalle">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-lg">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-label-sm font-semibold bg-secondary-fixed text-on-secondary-fixed">Factura</span>
+</td>
+<td class="py-space-md px-space-md font-mono text-legal-code-xs text-legal-code-xs text-on-surface-variant">
+              DTE-01-000010480
+            </td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Roberto Antonio Meléndez</span>
+<span class="font-legal-code-xs text-legal-code-xs text-outline">DUI: 04512398-7</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-fiscal-numeric-md text-fiscal-numeric-md font-semibold text-on-surface">
+              $50.85
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-tertiary-container font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Recibido MH
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface transition-colors" title="Descargar PDF">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-secondary transition-colors" title="Ver Detalle">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-lg">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-label-sm font-semibold bg-primary text-on-primary">CCF</span>
+</td>
+<td class="py-space-md px-space-md font-mono text-legal-code-xs text-legal-code-xs text-on-surface-variant">
+              DTE-03-000004119
+            </td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Super Selectos S.A. de C.V.</span>
+<span class="font-legal-code-xs text-legal-code-xs text-outline">NRC: 1984-2 • Gran Contribuyente</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-fiscal-numeric-md text-fiscal-numeric-md font-semibold text-on-surface">
+              $4,480.00
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-tertiary-container font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Recibido MH
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface transition-colors" title="Descargar PDF">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-secondary transition-colors" title="Ver Detalle">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-lg">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-label-sm font-semibold bg-error-container text-on-error-container">NC</span>
+</td>
+<td class="py-space-md px-space-md font-mono text-legal-code-xs text-legal-code-xs text-on-surface-variant">
+              DTE-05-000000292
+            </td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Global Logistics El Salvador</span>
+<span class="font-legal-code-xs text-legal-code-xs text-outline">Doc Relacionado: CCF-03-4018</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-fiscal-numeric-md text-fiscal-numeric-md font-semibold text-error">
+              -$339.00
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-low text-on-tertiary-container font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Recibido MH
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface transition-colors" title="Descargar PDF">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-secondary transition-colors" title="Ver Detalle">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 5 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-lg">
+<span class="inline-flex px-2 py-0.5 rounded font-label-sm text-label-sm font-semibold bg-secondary-fixed text-on-secondary-fixed">Factura</span>
+</td>
+<td class="py-space-md px-space-md font-mono text-legal-code-xs text-legal-code-xs text-on-surface-variant">
+              DTE-01-000010481
+            </td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Beatriz Elena Morales</span>
+<span class="font-legal-code-xs text-legal-code-xs text-outline">DUI: 01928473-2</span>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right font-fiscal-numeric-md text-fiscal-numeric-md font-semibold text-on-surface">
+              $124.30
+            </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-fixed/50 text-secondary font-label-sm text-label-sm font-medium">
+<span class="material-symbols-outlined text-xs animate-spin">refresh</span>
+                Transmitido
+              </span>
+</td>
+<td class="py-space-md px-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface transition-colors" title="Descargar PDF">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-secondary transition-colors" title="Ver Detalle">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pie de Tabla Limpio -->
+<div class="p-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm bg-surface-container-low border-t border-surface-container-high">
+<span class="font-label-sm text-label-sm text-outline">
+        Mostrando 5 de 14,892 documentos
+      </span>
+<div class="flex items-center gap-1 text-label-sm font-label-sm">
+<button class="px-2.5 py-1 rounded-lg border border-surface-container-high bg-surface-container-lowest text-outline hover:text-on-surface transition-colors">Anterior</button>
+<span class="px-2 text-on-surface font-semibold">1 / 2,979</span>
+<button class="px-2.5 py-1 rounded-lg border border-surface-container-high bg-surface-container-lowest text-outline hover:text-on-surface transition-colors">Siguiente</button>
+</div>
+</div>
+</div>
+</div></div></main></div></body></html>
