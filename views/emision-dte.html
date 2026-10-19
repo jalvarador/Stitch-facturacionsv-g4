@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><title>Emisión de DTE · DTE Factura-SV</title><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "outline-variant": "#c3c7cd",
+        "surface-dim": "#cbdbf5",
+        "on-tertiary-fixed": "#002114",
+        "on-background": "#0b1c30",
+        "surface-tint": "#4c6075",
+        "on-surface-variant": "#43474c",
+        "surface-bright": "#f8f9ff",
+        "surface-container-highest": "#d3e4fe",
+        "secondary-container": "#316bf3",
+        "on-error": "#ffffff",
+        "surface-container-high": "#dce9ff",
+        "surface-variant": "#d3e4fe",
+        "primary-container": "#0f2537",
+        "tertiary-fixed-dim": "#68dba9",
+        "on-surface": "#0b1c30",
+        "on-primary-fixed-variant": "#34495c",
+        "on-secondary-fixed": "#00174b",
+        "on-primary-container": "#788da3",
+        "on-tertiary-fixed-variant": "#005137",
+        "secondary-fixed": "#dbe1ff",
+        "error": "#ba1a1a",
+        "tertiary-container": "#002a1b",
+        "inverse-primary": "#b3c9e0",
+        "primary": "#000f1d",
+        "outline": "#74777d",
+        "secondary": "#0051d5",
+        "error-container": "#ffdad6",
+        "on-secondary": "#ffffff",
+        "primary-fixed": "#cfe5fd",
+        "on-tertiary-container": "#1a9e70",
+        "on-error-container": "#93000a",
+        "tertiary": "#001209",
+        "inverse-surface": "#213145",
+        "on-secondary-fixed-variant": "#003ea8",
+        "surface-container": "#e5eeff",
+        "on-primary": "#ffffff",
+        "background": "#f8f9ff",
+        "tertiary-fixed": "#85f8c4",
+        "on-secondary-container": "#fefcff",
+        "surface": "#f8f9ff",
+        "on-primary-fixed": "#061d2f",
+        "primary-fixed-dim": "#b3c9e0",
+        "surface-container-low": "#eff4ff",
+        "on-tertiary": "#ffffff",
+        "secondary-fixed-dim": "#b4c5ff",
+        "surface-container-lowest": "#ffffff",
+        "inverse-on-surface": "#eaf1ff"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      "spacing": {
+        "margin-desktop": "2rem",
+        "space-xs": "0.25rem",
+        "space-lg": "1.25rem",
+        "space-sm": "0.5rem",
+        "gutter-desktop": "1.5rem",
+        "space-xl": "2rem",
+        "margin": "1rem",
+        "gutter": "1rem",
+        "space-md": "0.75rem"
+      },
+      "fontFamily": {
+        "legal-code-sm": ["JetBrains Mono"],
+        "fiscal-numeric-lg": ["Inter"],
+        "headline-lg": ["Inter"],
+        "headline-sm": ["Inter"],
+        "fiscal-numeric-md": ["Inter"],
+        "body-lg": ["Inter"],
+        "body-sm": ["Inter"],
+        "headline-xl": ["Inter"],
+        "body-md": ["Inter"],
+        "label-sm": ["Inter"],
+        "headline-md": ["Inter"],
+        "label-md": ["Inter"],
+        "legal-code-xs": ["JetBrains Mono"]
+      },
+      "fontSize": {
+        "legal-code-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+        "fiscal-numeric-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+        "headline-sm": ["16px", {"lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+        "fiscal-numeric-md": ["14px", {"lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+        "legal-code-xs": ["11px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "400"}]
+      }
+    }
+  }
+}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-lg flex items-center justify-between border-b border-surface-container-high bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><img alt="DTE El Salvador Logo" class="h-8 w-auto object-contain" src="img/logo-dte.svg"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-primary leading-tight tracking-tight">DTE Factura-SV</span><span class="font-legal-code-xs text-legal-code-xs text-on-surface-variant font-medium">MINISTERIO DE HACIENDA</span></div></div></div><div class="px-space-md py-space-sm"><div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-base">store</span><div class="flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Punto de Venta</span><span class="font-body-sm text-body-sm text-on-surface font-semibold truncate max-w-[170px]" title="Casa Matriz - Sucursal San Salvador 01 (PV-01)">Casa Matriz (PV-01)</span></div></div><span class="material-symbols-outlined text-on-surface-variant text-base">expand_more</span></div></div><div class="px-space-md pb-space-xs"><a class="flex items-center gap-space-xs px-space-sm py-space-sm rounded-lg border border-surface-container-high text-secondary font-label-md text-label-md hover:bg-surface-container-low transition-colors" href="../index.html">← Volver al inicio</a></div><nav class="flex flex-col gap-space-xs px-space-md py-space-xs" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><span class="px-space-sm py-space-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Operación Fiscal</span><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" data-path="dashboard-fiscal" href="dashboard-fiscal.html"><span class="material-symbols-outlined text-xl">dashboard</span><span class="font-body-md text-body-md">Dashboard Fiscal</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors bg-primary-container text-on-primary font-semibold shadow-sm" data-path="emision-dte" href="emision-dte.html"><span class="material-symbols-outlined text-xl">post_add</span><span class="font-body-md text-body-md">Emisión de DTE</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" data-path="consulta-trazabilidad" href="consulta-trazabilidad.html"><span class="material-symbols-outlined text-xl">find_in_page</span><span class="font-body-md text-body-md">Consulta y Trazabilidad</span></a><a aria-disabled="true" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant opacity-50 cursor-not-allowed" data-path="eventos-invalidacion" title="Pantalla no incluida en el diseño de Stitch"><span class="material-symbols-outlined text-xl">rule_folder</span><span class="font-body-md text-body-md">Invalidación y Anulación</span></a><a aria-disabled="true" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant opacity-50 cursor-not-allowed" data-path="contingencia-lotes" title="Pantalla no incluida en el diseño de Stitch"><span class="material-symbols-outlined text-xl">cloud_off</span><span class="font-body-md text-body-md">Contingencia Offline</span></a><div class="my-space-xs border-t border-surface-container-high"></div><span class="px-space-sm py-space-xs font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Cumplimiento y Firma</span><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface" data-path="reportes-f07" href="reportes-f07.html"><span class="material-symbols-outlined text-xl">assessment</span><span class="font-body-md text-body-md">Reportes e Informes F-07</span></a><a aria-disabled="true" class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg transition-colors text-on-surface-variant opacity-50 cursor-not-allowed" data-path="configuracion-firma" title="Pantalla no incluida en el diseño de Stitch"><span class="material-symbols-outlined text-xl">vpn_key</span><span class="font-body-md text-body-md">Firma y Llave Digital</span></a></nav></div><div class="p-space-md border-t border-surface-container-high bg-surface-container-lowest"><div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant">ESTADO MH SV</span><span class="font-legal-code-xs text-legal-code-xs text-on-tertiary-container font-semibold">EN LÍNEA</span></div><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span><span class="font-legal-code-xs text-legal-code-xs text-on-surface-variant">Sincronización API v3</span></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter-desktop border-b border-surface-container-high"><div class="flex items-center gap-space-lg"><div class="inline-flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-tertiary-container text-tertiary-fixed border border-on-tertiary-fixed-variant"><span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-ping"></span><span class="w-2 h-2 rounded-full bg-tertiary-fixed -ml-2.5"></span><span class="font-label-sm text-label-sm font-semibold tracking-wide uppercase">Ambiente de Producción - MH SV</span></div><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined text-base text-secondary">verified_user</span><span class="font-legal-code-xs text-legal-code-xs font-medium">Certificado Digital Vigente hasta Dic 2025</span></div></div><div class="flex items-center gap-space-lg"><div class="hidden md:flex flex-col text-right"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Establecimiento Activo</span><span class="font-body-sm text-body-sm font-semibold text-on-surface">San Salvador 01 (PV-01)</span></div><div class="h-8 w-px bg-surface-container-high"></div><div class="flex items-center gap-space-md"><div class="flex flex-col text-right"><span class="font-body-md text-body-md font-semibold text-on-surface leading-tight">Licda. Carmen Rivera</span><span class="font-label-sm text-label-sm text-on-surface-variant">Auditor Fiscal / Administrador</span></div><img alt="Avatar de Licda. Carmen Rivera" class="w-8 h-8 rounded-full object-cover ring-2 ring-surface-container-high" src="img/avatar.svg"/></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<div class="px-gutter-desktop py-space-lg flex flex-col gap-space-lg max-w-[1720px] mx-auto w-full"><!-- Encabezado Limpio & Contexto -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-1 border-b border-surface-container-high">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm uppercase tracking-wider">
+<span>Facturación Electrónica</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-secondary font-semibold">Nueva Emisión</span>
+</div>
+<div class="flex items-center gap-space-md">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">Nueva Facturación DTE</h1>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm font-medium">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+        Transmisión Segura MH • En Línea
+      </span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-xl bg-surface-container-lowest text-on-surface-variant font-label-md shadow-sm hover:bg-surface-container transition-all border border-surface-container" type="button">
+<span class="material-symbols-outlined text-lg">history</span>
+<span>Historial Reciente</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-xl bg-surface-container-lowest text-secondary font-label-md shadow-sm hover:bg-surface-container transition-all border border-surface-container" type="button">
+<span class="material-symbols-outlined text-lg">help_outline</span>
+<span>Guía y Ayuda</span>
+</button>
+</div>
+</div>
+<!-- Selector Limpio de Tipo de Documento -->
+<div class="bg-surface-container-lowest p-1.5 rounded-2xl shadow-sm border border-surface-container flex flex-wrap md:flex-nowrap gap-1.5">
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-space-md rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all" onclick="cambiarTipoDTE('01', this)" type="button">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+<div class="flex flex-col text-left">
+<span class="font-label-md font-semibold leading-tight">Factura</span>
+<span class="font-legal-code-xs text-on-surface-variant opacity-75">Consumidor Final (B2C)</span>
+</div>
+</button>
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-space-md rounded-xl bg-primary text-on-primary shadow-sm transition-all" onclick="cambiarTipoDTE('03', this)" type="button">
+<span class="material-symbols-outlined text-lg text-tertiary-fixed">domain</span>
+<div class="flex flex-col text-left">
+<span class="font-label-md font-bold leading-tight">Crédito Fiscal (CCF)</span>
+<span class="font-legal-code-xs text-primary-fixed-dim">Empresarial (B2B con IVA)</span>
+</div>
+</button>
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-space-md rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all" onclick="cambiarTipoDTE('05', this)" type="button">
+<span class="material-symbols-outlined text-lg">assignment_return</span>
+<div class="flex flex-col text-left">
+<span class="font-label-md font-semibold leading-tight">Nota de Crédito</span>
+<span class="font-legal-code-xs text-on-surface-variant opacity-75">Ajuste o Devolución</span>
+</div>
+</button>
+<button class="flex-1 flex items-center justify-center gap-2 py-3 px-space-md rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-all" onclick="cambiarTipoDTE('06', this)" type="button">
+<span class="material-symbols-outlined text-lg">post_add</span>
+<div class="flex flex-col text-left">
+<span class="font-label-md font-semibold leading-tight">Nota de Débito</span>
+<span class="font-legal-code-xs text-on-surface-variant opacity-75">Recargos Financieros</span>
+</div>
+</button>
+</div>
+<!-- Layout Principal de 2 Columnas -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- COLUMNA IZQUIERDA: Flujo de Carga Principal (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- PASO 1: Datos del Cliente (Ágil y Condensado) -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm border border-surface-container flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container-high">
+<div class="flex items-center gap-space-sm">
+<span class="w-7 h-7 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-sm">1</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Datos del Cliente</h2>
+</div>
+<button class="inline-flex items-center gap-1 text-secondary font-label-md font-semibold hover:underline" type="button">
+<span class="material-symbols-outlined text-base">manage_search</span>
+<span>Padrón MH</span>
+</button>
+</div>
+<!-- Buscador Rápido -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-3 text-on-surface-variant">search</span>
+<input class="w-full h-12 pl-11 pr-28 bg-surface-container-low rounded-xl font-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#316bf3] border border-transparent transition-all" placeholder="Buscar por NIT, NRC o Razón Social..." type="text" value="0614-120588-102-4  •  DISTRIBUIDORA COMERCIAL SALVADOREÑA S.A. DE C.V."/>
+<div class="absolute right-2.5 top-2.5 flex items-center gap-1.5">
+<span class="font-label-sm px-2 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">Verificado MH</span>
+</div>
+</div>
+<!-- Tarjeta Resumida del Receptor Seleccionado -->
+<div class="p-space-md rounded-xl bg-surface-container-low/70 border border-surface-container flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-body-md font-bold text-on-surface">DISTRIBUIDORA COMERCIAL SALVADOREÑA S.A. DE C.V.</span>
+<span class="px-2 py-0.5 rounded bg-surface-container font-legal-code-xs text-on-surface-variant font-medium">NRC: 294812-3</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-on-surface-variant font-body-sm text-body-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">badge</span>
+              NIT: 0614-120588-102-4
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">business_center</span>
+              4649 - Venta al por mayor de otros enseres domésticos
+            </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">mail</span>
+              facturacion@distribuidorasv.com
+            </span>
+</div>
+</div>
+<button class="text-secondary hover:underline font-label-md font-semibold self-start sm:self-center shrink-0" type="button">
+          Cambiar cliente
+        </button>
+</div>
+</div>
+<!-- PASO 2: Ítems y Servicios (Tabla Moderna y Espaciosa) -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm border border-surface-container flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-xs border-b border-surface-container-high">
+<div class="flex items-center gap-space-sm">
+<span class="w-7 h-7 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-sm">2</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Productos y Servicios Facturados</h2>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-xl bg-surface-container-low text-on-surface font-label-md font-semibold hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-base">inventory_2</span>
+<span>Catálogo</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-space-md py-2 rounded-xl bg-secondary text-on-secondary font-label-md font-semibold hover:bg-secondary-container transition-all shadow-sm" onclick="agregarFilaVacia()" type="button">
+<span class="material-symbols-outlined text-base">add_circle</span>
+<span>+ Agregar Producto o Servicio</span>
+</button>
+</div>
+</div>
+<!-- Tabla Dinámica Limpia -->
+<div class="overflow-x-auto rounded-xl border border-surface-container bg-surface-container-lowest">
+<table class="w-full text-left" id="tablaDetalleDTE">
+<thead class="bg-surface-container-low text-on-surface-variant font-label-sm uppercase tracking-wider">
+<tr>
+<th class="py-3 px-space-sm w-10 text-center">#</th>
+<th class="py-3 px-space-sm min-w-[280px]">Descripción del Producto / Servicio</th>
+<th class="py-3 px-space-sm w-24 text-center">Cant.</th>
+<th class="py-3 px-space-sm w-28 text-center">Tipo</th>
+<th class="py-3 px-space-sm w-32 text-right">Precio Unit. ($)</th>
+<th class="py-3 px-space-sm w-32 text-right">Total ($)</th>
+<th class="py-3 px-space-sm w-12 text-center"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-sm text-on-surface" id="filasItems">
+<!-- Fila 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-3 px-space-sm text-center font-legal-code-xs text-on-surface-variant font-semibold">1</td>
+<td class="py-3 px-space-sm">
+<input class="w-full h-9 px-3 bg-surface-container-low rounded-lg font-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_1px_#316bf3] border border-transparent" type="text" value="Licencia Anual Plataforma ERP Cloud Enterprise SV"/>
+</td>
+<td class="py-3 px-space-sm">
+<input class="w-full h-9 px-2 bg-surface-container-low rounded-lg font-legal-code-sm text-center item-cant focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_1px_#316bf3] border border-transparent" onchange="recalcularTotales()" step="1" type="number" value="1"/>
+</td>
+<td class="py-3 px-space-sm">
+<select class="w-full h-9 px-1.5 bg-surface-container-low rounded-lg font-legal-code-xs text-on-surface item-tipo-venta focus:outline-none border border-transparent" onchange="recalcularTotales()">
+<option selected="" value="GRAVADA">Gravado</option>
+<option value="EXENTA">Exento</option>
+<option value="NOSUJETA">No Sujeto</option>
+</select>
+</td>
+<td class="py-3 px-space-sm text-right">
+<input class="w-full h-9 px-2 bg-surface-container-low rounded-lg font-legal-code-sm text-right item-precio focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_1px_#316bf3] border border-transparent" onchange="recalcularTotales()" step="0.01" type="number" value="1250.00"/>
+<input class="item-desc" type="hidden" value="0.00"/>
+</td>
+<td class="py-3 px-space-sm text-right font-legal-code-sm font-bold text-on-surface item-subtotal">1,250.00</td>
+<td class="py-3 px-space-sm text-center">
+<button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-lg hover:bg-surface-container-high" onclick="eliminarFila(this)" title="Eliminar ítem" type="button">
+<span class="material-symbols-outlined text-lg">delete_outline</span>
+</button>
+</td>
+</tr>
+<!-- Fila 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-3 px-space-sm text-center font-legal-code-xs text-on-surface-variant font-semibold">2</td>
+<td class="py-3 px-space-sm">
+<input class="w-full h-9 px-3 bg-surface-container-low rounded-lg font-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_1px_#316bf3] border border-transparent" type="text" value="Servicios Profesionales de Implementación y Auditoría Fiscal TI"/>
+</td>
+<td class="py-3 px-space-sm">
+<input class="w-full h-9 px-2 bg-surface-container-low rounded-lg font-legal-code-sm text-center item-cant focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_1px_#316bf3] border border-transparent" onchange="recalcularTotales()" step="1" type="number" value="1"/>
+</td>
+<td class="py-3 px-space-sm">
+<select class="w-full h-9 px-1.5 bg-surface-container-low rounded-lg font-legal-code-xs text-on-surface item-tipo-venta focus:outline-none border border-transparent" onchange="recalcularTotales()">
+<option selected="" value="GRAVADA">Gravado</option>
+<option value="EXENTA">Exento</option>
+<option value="NOSUJETA">No Sujeto</option>
+</select>
+</td>
+<td class="py-3 px-space-sm text-right">
+<input class="w-full h-9 px-2 bg-surface-container-low rounded-lg font-legal-code-sm text-right item-precio focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_1px_#316bf3] border border-transparent" onchange="recalcularTotales()" step="0.01" type="number" value="800.00"/>
+<input class="item-desc" type="hidden" value="0.00"/>
+</td>
+<td class="py-3 px-space-sm text-right font-legal-code-sm font-bold text-on-surface item-subtotal">800.00</td>
+<td class="py-3 px-space-sm text-center">
+<button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-lg hover:bg-surface-container-high" onclick="eliminarFila(this)" title="Eliminar ítem" type="button">
+<span class="material-symbols-outlined text-lg">delete_outline</span>
+</button>
+</td>
+</tr>
+<!-- Fila 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-3 px-space-sm text-center font-legal-code-xs text-on-surface-variant font-semibold">3</td>
+<td class="py-3 px-space-sm">
+<input class="w-full h-9 px-3 bg-surface-container-low rounded-lg font-body-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_1px_#316bf3] border border-transparent" type="text" value="Dispositivos Criptográficos USB Token FIPS 140-2 Nivel 3"/>
+</td>
+<td class="py-3 px-space-sm">
+<input class="w-full h-9 px-2 bg-surface-container-low rounded-lg font-legal-code-sm text-center item-cant focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_1px_#316bf3] border border-transparent" onchange="recalcularTotales()" step="1" type="number" value="2"/>
+</td>
+<td class="py-3 px-space-sm">
+<select class="w-full h-9 px-1.5 bg-surface-container-low rounded-lg font-legal-code-xs text-on-surface item-tipo-venta focus:outline-none border border-transparent" onchange="recalcularTotales()">
+<option selected="" value="GRAVADA">Gravado</option>
+<option value="EXENTA">Exento</option>
+<option value="NOSUJETA">No Sujeto</option>
+</select>
+</td>
+<td class="py-3 px-space-sm text-right">
+<input class="w-full h-9 px-2 bg-surface-container-low rounded-lg font-legal-code-sm text-right item-precio focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_1px_#316bf3] border border-transparent" onchange="recalcularTotales()" step="0.01" type="number" value="200.00"/>
+<input class="item-desc" type="hidden" value="0.00"/>
+</td>
+<td class="py-3 px-space-sm text-right font-legal-code-sm font-bold text-on-surface item-subtotal">400.00</td>
+<td class="py-3 px-space-sm text-center">
+<button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-lg hover:bg-surface-container-high" onclick="eliminarFila(this)" title="Eliminar ítem" type="button">
+<span class="material-symbols-outlined text-lg">delete_outline</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm pt-space-xs">
+<span class="font-legal-code-xs font-semibold" id="contadorItems">3 ítems registrados</span>
+<button class="inline-flex items-center gap-1 text-secondary font-label-md font-semibold hover:underline" onclick="agregarFilaVacia()" type="button">
+<span class="material-symbols-outlined text-base">add</span>
+<span>Añadir otra línea</span>
+</button>
+</div>
+</div>
+<!-- PASO 3: Opciones Adicionales y Condiciones de Pago (Sutil y Amigable) -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm border border-surface-container flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container-high">
+<div class="flex items-center gap-space-sm">
+<span class="w-7 h-7 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-sm">3</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Condiciones de Pago &amp; Retenciones</h2>
+</div>
+<span class="font-label-sm text-on-surface-variant">Ajustes Opcionales</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-on-surface-variant uppercase tracking-wider">Condición de Pago</label>
+<div class="relative">
+<select class="w-full h-11 px-space-sm bg-surface-container-low rounded-xl font-body-sm text-on-surface appearance-none focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#316bf3] border border-transparent">
+<option selected="" value="1">Contado (Inmediato)</option>
+<option value="2">Crédito a 30 días</option>
+<option value="3">Crédito a 60 días</option>
+</select>
+<span class="material-symbols-outlined text-base text-on-surface-variant absolute right-3 top-3.5 pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-on-surface-variant uppercase tracking-wider">Método de Pago</label>
+<div class="relative">
+<select class="w-full h-11 px-space-sm bg-surface-container-low rounded-xl font-body-sm text-on-surface appearance-none focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#316bf3] border border-transparent">
+<option selected="" value="04">Transferencia Bancaria (ACH / SPEI)</option>
+<option value="01">Efectivo / Caja</option>
+<option value="02">Tarjeta de Crédito / Débito</option>
+<option value="03">Cheque Bancario</option>
+</select>
+<span class="material-symbols-outlined text-base text-on-surface-variant absolute right-3 top-3.5 pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Toggle Amigable de Retención 1% Gran Contribuyente -->
+<div class="p-space-md rounded-xl bg-surface-container-low/70 border border-surface-container flex items-center justify-between gap-space-md cursor-pointer" onclick="const chk = document.getElementById('checkGranContribuyente'); chk.checked = !chk.checked; recalcularTotales();">
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-5 h-5 rounded text-secondary focus:ring-0 cursor-pointer" id="checkGranContribuyente" onchange="recalcularTotales()" onclick="event.stopPropagation();" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-on-surface">Cliente es Agente de Retención (Gran Contribuyente)</span>
+<span class="font-body-sm text-on-surface-variant">Aplica retención automática del 1.00% de IVA en ventas ≥ $100 (Art. 162-A)</span>
+</div>
+</div>
+<span class="font-legal-code-xs px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface font-semibold shrink-0">Retención 1%</span>
+</div>
+</div>
+</div>
+<!-- COLUMNA DERECHA: Resumen de Liquidación y Acción - Sticky Card Limpia (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md lg:sticky lg:top-20">
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-md border border-surface-container flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container-high">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Resumen a Cobrar</h3>
+<span class="font-legal-code-xs px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-semibold">USD ($)</span>
+</div>
+<!-- Desglose Limpio de Importes -->
+<div class="flex flex-col gap-3 font-body-md text-body-md">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Subtotal Ventas</span>
+<span class="font-legal-code-sm font-semibold text-on-surface" id="lblSubtotal">$2,450.00</span>
+</div>
+<div class="flex justify-between items-center text-secondary">
+<div class="flex items-center gap-1.5">
+<span>IVA (13%)</span>
+<span class="font-legal-code-xs bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.5 rounded font-semibold">CCF</span>
+</div>
+<span class="font-legal-code-sm font-bold" id="lblIva">$318.50</span>
+</div>
+<div class="flex justify-between items-center text-error" id="filaRetencion">
+<div class="flex items-center gap-1.5">
+<span>Retención IVA 1% (-)</span>
+<span class="material-symbols-outlined text-xs">verified</span>
+</div>
+<span class="font-legal-code-sm font-bold" id="lblRetencion">-$24.50</span>
+</div>
+<div class="hidden" id="lblGravadas">$2,450.00</div>
+<div class="hidden" id="lblExentas">$0.00</div>
+<div class="hidden" id="lblNoSujetas">$0.00</div>
+</div>
+<!-- Gran Total en USD Destacado -->
+<div class="p-space-md rounded-2xl bg-primary text-on-primary flex flex-col gap-1.5 shadow-sm">
+<span class="font-label-sm text-primary-fixed-dim uppercase tracking-wider font-semibold">Total a Pagar</span>
+<div class="flex items-baseline justify-between">
+<span class="font-headline-sm text-surface-container-highest">USD</span>
+<span class="font-fiscal-numeric-lg text-fiscal-numeric-lg font-bold tracking-tight text-surface-bright text-3xl" id="lblTotalFinal">$2,744.00</span>
+</div>
+<span class="font-legal-code-xs text-on-primary-container text-right">Dos mil setecientos cuarenta y cuatro 00/100 USD</span>
+</div>
+<!-- Correlativo Asignado Sutilmente -->
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between text-on-surface-variant font-label-sm">
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant">Número de Control Correlativo</span>
+<span class="font-legal-code-sm font-bold text-on-surface tracking-wide" id="lblNumeroControl">DTE-03-M001P001-000000000452</span>
+</div>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary transition-colors" onclick="copiarControl(this)" title="Copiar número de control" type="button">
+<span class="material-symbols-outlined text-base">content_copy</span>
+</button>
+</div>
+<!-- Botones de Acción: Principal Destacado + Secundarios -->
+<div class="flex flex-col gap-2.5 pt-1">
+<button class="w-full py-3.5 px-space-md rounded-xl bg-secondary text-on-secondary font-headline-sm font-bold flex items-center justify-center gap-2 shadow-md hover:bg-secondary-container active:scale-[0.99] transition-all" id="btnTransmitir" onclick="ejecutarFirmaTransmision()" type="button">
+<span class="material-symbols-outlined text-xl">send</span>
+<span>Firmar y Emitir Factura</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2.5 px-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md font-semibold flex items-center justify-center gap-1.5 transition-colors border border-surface-container" type="button">
+<span class="material-symbols-outlined text-base">save</span>
+<span>Borrador</span>
+</button>
+<button class="py-2.5 px-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md font-semibold flex items-center justify-center gap-1.5 transition-colors border border-surface-container" onclick="abrirModalVistaPrevia()" type="button">
+<span class="material-symbols-outlined text-base">visibility</span>
+<span>Vista Previa</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Badge Sutil de Transmisión Segura -->
+<div class="flex items-center justify-center gap-2 text-on-surface-variant font-label-sm py-1">
+<span class="material-symbols-outlined text-sm text-secondary">lock</span>
+<span>Certificado Digital Activo • Encriptación MH SV</span>
+</div>
+</div>
+</div>
+<!-- Modal Dialog: Vista Previa Representación Gráfica (Hidden by default) -->
+<div class="fixed inset-0 z-50 bg-primary/60 backdrop-blur-sm hidden items-center justify-center p-4" id="modalPreviewDTE">
+<div class="bg-surface-container-lowest rounded-2xl max-w-2xl w-full max-h-[921px] overflow-y-auto shadow-2xl p-space-lg flex flex-col gap-space-md border border-surface-container">
+<div class="flex items-center justify-between border-b border-surface-container pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary">picture_as_pdf</span>
+<h3 class="font-headline-md font-bold text-on-surface">Representación Gráfica del DTE</h3>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg hover:bg-surface-container-low" onclick="cerrarModalVistaPrevia()" type="button">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<div class="bg-surface-container-low p-space-lg rounded-xl shadow-inner flex flex-col gap-space-md font-body-sm text-on-surface border border-surface-container">
+<div class="flex justify-between items-start border-b border-surface-container pb-3">
+<div>
+<span class="font-headline-sm font-bold text-primary">CORPORACIÓN INDUSTRIAL TECNOLÓGICA S.A.</span>
+<p class="font-legal-code-xs text-on-surface-variant">NIT: 0614-010190-101-2 | NRC: 198402-9</p>
+<p class="font-legal-code-xs text-on-surface-variant">Giro: Servicios de Tecnologías de Información</p>
+</div>
+<div class="text-right">
+<span class="inline-block px-2.5 py-0.5 rounded bg-primary text-on-primary font-legal-code-xs font-bold uppercase" id="badgeTipoModal">Crédito Fiscal</span>
+<p class="font-legal-code-xs font-semibold mt-1">DTE-03-M001P001-000000000452</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 text-xs">
+<div>
+<p class="font-semibold text-on-surface">RECEPTOR:</p>
+<p class="text-on-surface font-medium">DISTRIBUIDORA COMERCIAL SALVADOREÑA S.A. DE C.V.</p>
+<p class="text-on-surface-variant font-mono">NIT: 0614-120588-102-4 | NRC: 294812-3</p>
+<p class="text-on-surface-variant">San Salvador Centro, San Salvador</p>
+</div>
+<div>
+<p class="font-semibold text-on-surface">CONDICIÓN DE PAGO:</p>
+<p class="text-on-surface-variant">Contado • Transferencia ACH</p>
+<p class="font-semibold text-on-surface mt-2">FECHA Y HORA:</p>
+<p class="text-on-surface-variant font-mono">18/05/2024 10:45:12 CST</p>
+</div>
+</div>
+<div class="border-t border-surface-container pt-3">
+<div class="flex justify-between font-semibold">
+<span>Total DTE:</span>
+<span class="font-fiscal-numeric-md text-secondary font-bold" id="modalTotal">$2,744.00 USD</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-xl bg-surface-container text-on-surface font-label-md font-semibold hover:bg-surface-variant transition-colors" onclick="cerrarModalVistaPrevia()" type="button">
+        Cerrar
+      </button>
+<button class="px-space-md py-2 rounded-xl bg-secondary text-on-secondary font-label-md font-semibold flex items-center gap-1 hover:bg-secondary-container transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Descargar PDF</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Toast Notificación de Éxito -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-surface-container-lowest rounded-2xl p-space-md shadow-2xl border border-surface-container flex items-center gap-space-md" id="toastSuccess">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm font-bold text-on-surface">DTE Transmitido y Sellado con Éxito</span>
+<span class="font-legal-code-xs text-on-surface-variant">Sello MH: 20244F819A2BC38E9012 • Estado: RECIBIDO</span>
+</div>
+</div></div>
+<script>
+    let tipoDTEActual = '03';
+
+    function cambiarTipoDTE(tipo, btnElement) {
+      tipoDTEActual = tipo;
+      
+      // Update Tab Styles
+      const allTabs = btnElement.parentElement.querySelectorAll('button');
+      allTabs.forEach(t => {
+        t.className = 'flex-1 flex items-center justify-center gap-space-xs py-3 px-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors group';
+      });
+      btnElement.className = 'flex-1 flex items-center justify-center gap-space-xs py-3 px-space-sm rounded-lg bg-primary-container text-on-primary shadow-sm transition-all group';
+
+      // Update control number prefix based on official MH format
+      const controlLabel = document.getElementById('lblNumeroControl');
+      controlLabel.textContent = `DTE-${tipo}-M001P001-000000000452`;
+
+      // Update Tipo Doc requirement badge/context
+      const tipoDocSelect = document.getElementById('tipoDocReceptor');
+      if (tipo === '01') {
+        tipoDocSelect.value = 'DUI';
+      } else {
+        tipoDocSelect.value = 'NIT';
+      }
+
+      const badgeModal = document.getElementById('badgeTipoModal');
+      const nombres = {
+        '01': 'Factura Consumidor Final',
+        '03': 'Comprobante Crédito Fiscal',
+        '05': 'Nota de Crédito',
+        '06': 'Nota de Débito'
+      };
+      if (badgeModal) badgeModal.textContent = nombres[tipo] || 'Documento Tributario';
+
+      recalcularTotales();
+    }
+
+    function recalcularTotales() {
+      const rows = document.querySelectorAll('#filasItems tr');
+      let sumaGravada = 0;
+      let sumaExenta = 0;
+      let sumaNoSujeta = 0;
+
+      rows.forEach(r => {
+        const cant = parseFloat(r.querySelector('.item-cant')?.value || 0);
+        const precio = parseFloat(r.querySelector('.item-precio')?.value || 0);
+        const desc = parseFloat(r.querySelector('.item-desc')?.value || 0);
+        const tipoVenta = r.querySelector('.item-tipo-venta')?.value || 'GRAVADA';
+
+        const subtotal = Math.max(0, (cant * precio) - desc);
+        const cellSubtotal = r.querySelector('.item-subtotal');
+        if (cellSubtotal) {
+          cellSubtotal.textContent = subtotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        if (tipoVenta === 'GRAVADA') sumaGravada += subtotal;
+        else if (tipoVenta === 'EXENTA') sumaExenta += subtotal;
+        else if (tipoVenta === 'NOSUJETA') sumaNoSujeta += subtotal;
+      });
+
+      const subtotalTotal = sumaGravada + sumaExenta + sumaNoSujeta;
+      const iva = (tipoDTEActual === '03' || tipoDTEActual === '05' || tipoDTEActual === '06') ? (sumaGravada * 0.13) : 0;
+
+      const aplicaGranContribuyente = document.getElementById('checkGranContribuyente')?.checked;
+      const retencion = (aplicaGranContribuyente && sumaGravada >= 100) ? (sumaGravada * 0.01) : 0;
+
+      const totalFinal = subtotalTotal + iva - retencion;
+
+      // Update Labels
+      document.getElementById('lblGravadas').textContent = '$' + sumaGravada.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('lblExentas').textContent = '$' + sumaExenta.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('lblNoSujetas').textContent = '$' + sumaNoSujeta.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('lblSubtotal').textContent = '$' + subtotalTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('lblIva').textContent = '$' + iva.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      
+      const filaRet = document.getElementById('filaRetencion');
+      if (retencion > 0) {
+        filaRet.style.display = 'flex';
+        document.getElementById('lblRetencion').textContent = '-$' + retencion.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      } else {
+        filaRet.style.display = 'none';
+      }
+
+      document.getElementById('lblTotalFinal').textContent = '$' + totalFinal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const modalTot = document.getElementById('modalTotal');
+      if (modalTot) modalTot.textContent = '$' + totalFinal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' USD';
+    }
+
+    function eliminarFila(btn) {
+      const tbody = document.getElementById('filasItems');
+      if (tbody.children.length <= 1) {
+        alert('El DTE debe poseer al menos 1 ítem o servicio gravado/exento según normativa técnica de Hacienda.');
+        return;
+      }
+      btn.closest('tr').remove();
+      actualizarNumeracion();
+      recalcularTotales();
+    }
+
+    function agregarFilaVacia() {
+      const tbody = document.getElementById('filasItems');
+      const numFila = tbody.children.length + 1;
+      const tr = document.createElement('tr');
+      tr.className = 'hover:bg-surface-container-lowest transition-colors group';
+      tr.innerHTML = `
+        <td class="py-2 px-space-sm text-center font-legal-code-xs text-legal-code-xs text-on-surface-variant">${numFila}</td>
+        <td class="py-2 px-space-sm">
+          <input type="number" step="1" value="1" onchange="recalcularTotales()" class="w-full h-8 px-2 bg-surface-container-lowest rounded font-legal-code-sm text-legal-code-sm text-center item-cant focus:shadow-[0_0_0_1px_#316bf3]">
+        </td>
+        <td class="py-2 px-space-sm">
+          <select class="w-full h-8 px-1 bg-surface-container-lowest rounded font-legal-code-xs text-legal-code-xs text-on-surface">
+            <option value="99" selected>99 - Und</option>
+            <option value="59">59 - Serv</option>
+            <option value="48">48 - Cja</option>
+          </select>
+        </td>
+        <td class="py-2 px-space-sm">
+          <input type="text" placeholder="Descripción del producto o servicio" class="w-full h-8 px-2 bg-surface-container-lowest rounded font-body-sm text-body-sm focus:shadow-[0_0_0_1px_#316bf3]">
+        </td>
+        <td class="py-2 px-space-sm">
+          <select class="w-full h-8 px-1 bg-surface-container-lowest rounded font-legal-code-xs text-legal-code-xs text-on-surface item-tipo-venta" onchange="recalcularTotales()">
+            <option value="GRAVADA" selected>Gravada (13%)</option>
+            <option value="EXENTA">Exenta</option>
+            <option value="NOSUJETA">No Sujeta</option>
+          </select>
+        </td>
+        <td class="py-2 px-space-sm text-right">
+          <input type="number" step="0.01" value="0.00" onchange="recalcularTotales()" class="w-full h-8 px-2 bg-surface-container-lowest rounded font-legal-code-sm text-legal-code-sm text-right item-precio focus:shadow-[0_0_0_1px_#316bf3]">
+        </td>
+        <td class="py-2 px-space-sm text-right">
+          <input type="number" step="0.01" value="0.00" onchange="recalcularTotales()" class="w-full h-8 px-2 bg-surface-container-lowest rounded font-legal-code-sm text-legal-code-sm text-right item-desc focus:shadow-[0_0_0_1px_#316bf3]">
+        </td>
+        <td class="py-2 px-space-sm text-right font-legal-code-sm text-legal-code-sm font-semibold item-subtotal">0.00</td>
+        <td class="py-2 px-space-sm text-center">
+          <button type="button" onclick="eliminarFila(this)" class="text-on-surface-variant hover:text-error transition-colors p-1" title="Eliminar fila">
+            <span class="material-symbols-outlined text-lg">delete</span>
+          </button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+      actualizarNumeracion();
+      recalcularTotales();
+    }
+
+    function actualizarNumeracion() {
+      const rows = document.querySelectorAll('#filasItems tr');
+      rows.forEach((r, idx) => {
+        r.querySelector('td').textContent = idx + 1;
+      });
+      document.getElementById('contadorItems').textContent = `${rows.length} ítem${rows.length > 1 ? 's' : ''} registrado${rows.length > 1 ? 's' : ''}`;
+    }
+
+    function copiarControl(btn) {
+      const text = document.getElementById('lblNumeroControl').textContent;
+      navigator.clipboard.writeText(text);
+      const icon = btn.querySelector('.material-symbols-outlined');
+      icon.textContent = 'done';
+      setTimeout(() => { icon.textContent = 'content_copy'; }, 1500);
+    }
+
+    function abrirModalVistaPrevia() {
+      const m = document.getElementById('modalPreviewDTE');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function cerrarModalVistaPrevia() {
+      const m = document.getElementById('modalPreviewDTE');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    function ejecutarFirmaTransmision() {
+      const btn = document.getElementById('btnTransmitir');
+      const originalHTML = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `
+        <span class="material-symbols-outlined text-xl animate-spin">refresh</span>
+        <span>Firmando y Transmitiendo a MH SV...</span>
+      `;
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+
+        const toast = document.getElementById('toastSuccess');
+        toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        }, 4000);
+      }, 1400);
+    }
+
+    // Inicialización al cargar vista
+    document.addEventListener('DOMContentLoaded', () => {
+      recalcularTotales();
+    });
+  </script>
+</div></main></div></body></html>

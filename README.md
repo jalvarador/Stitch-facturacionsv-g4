@@ -147,7 +147,32 @@ Formato: `tipo(alcance): descripción` (5 a 72 caracteres, en imperativo).
 Ver [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Nuestro proyecto
-> *(El equipo completa esta sección: nombre del equipo, temática, integrantes, enlace al proyecto de Stitch y capturas.)*
+
+- **Equipo:** g4
+- **Realizado por:** Juan Carlos Alvarado
+- **Temática:** Proyecto que muestra diseño de un sistema de facturación en El Salvador según Ministerio de Hacienda
+
+### Capturas de pantalla
+
+**Portada** · [`index.html`](index.html)
+
+![Portada del proyecto con enlaces a las cuatro vistas](docs/capturas/index.png)
+
+**Dashboard Fiscal** · [`views/dashboard-fiscal.html`](views/dashboard-fiscal.html)
+
+![Dashboard Fiscal: ventas totales, IVA débito, DTE emitidos y evolución de facturación](docs/capturas/dashboard-fiscal.png)
+
+**Emisión de DTE** · [`views/emision-dte.html`](views/emision-dte.html)
+
+![Emisión de DTE: datos del cliente, productos y resumen a cobrar](docs/capturas/emision-dte.png)
+
+**Consulta y Trazabilidad** · [`views/consulta-trazabilidad.html`](views/consulta-trazabilidad.html)
+
+![Consulta y Trazabilidad: búsqueda por Sello de Recepción MH y tabla de documentos](docs/capturas/consulta-trazabilidad.png)
+
+**Reportes e Informes F-07** · [`views/reportes-f07.html`](views/reportes-f07.html)
+
+![Reportes e Informes F-07: débito fiscal, crédito fiscal y retenciones](docs/capturas/reportes-f07.png)
 
 ## Licencia
 [MIT](LICENSE) © 2026 Ronald Mejia
